@@ -51,6 +51,10 @@ API_VERSION = "2026-03-10"
 MAX_PER_PAGE = 100
 
 
+def log(message: str) -> None:
+    print(message, file=sys.stderr, flush=True)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Export GitHub repository search results from explicit search qualifiers."
@@ -315,6 +319,7 @@ def fetch_repositories(
     include_metadata: bool,
     token: str | None,
 ) -> tuple[list[dict[str, Any]], int]:
+    log(f"Fetching GitHub repositories for page {page} with per_page={per_page}")
     payload = github_get(build_request_url(query, page, per_page), token)
     total_count = int(payload.get("total_count", 0))
     incomplete_results = bool(payload.get("incomplete_results", False))
@@ -374,6 +379,7 @@ def main() -> int:
     if args.page < 1:
         raise SystemExit("--page must be at least 1.")
 
+    log(f"Built GitHub query: {query}")
     repositories, total_count = fetch_repositories(
         query=query,
         page=args.page,
@@ -383,6 +389,7 @@ def main() -> int:
     )
 
     os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
+    log(f"Writing {len(repositories)} repositories to {args.output}")
     if output_format == "json":
         write_json(args.output, query, repositories, total_count, args.page, per_page)
     else:
