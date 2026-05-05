@@ -59,6 +59,13 @@ def parse_args() -> argparse.Namespace:
         help="Output JSON or CSV file for the analysis result.",
     )
     parser.add_argument(
+        "--resume-from",
+        help=(
+            "Optional existing analysis file to reuse. Repositories with successful "
+            "rows in this file are skipped and copied into the new output."
+        ),
+    )
+    parser.add_argument(
         "--format",
         choices=("json", "csv"),
         help="Output format. If omitted, inferred from the output file extension.",
@@ -146,6 +153,22 @@ def parse_json_input(data: Any) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     raise SystemExit(
         "Unsupported JSON input structure. Expected either an object with a repositories list or a top-level list."
     )
+
+
+def load_existing_results(path: str) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    if not os.path.exists(path):
+        raise SystemExit(f"Resume file does not exist: {path}")
+
+    rows, metadata = read_input(path)
+    existing_results: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        try:
+            repo_name = normalize_repo_name(row)
+        except ValueError:
+            continue
+        if row.get("status") == "ok":
+            existing_results[repo_name] = row
+    return existing_results, metadata
 
 
 def normalize_repo_name(repository: dict[str, Any]) -> str:
@@ -255,6 +278,7 @@ def analyze_repositories(
     sleep_seconds: float,
     timeout_seconds: float,
     stop_on_error: bool,
+    existing_results: dict[str, dict[str, Any]],
 ) -> list[dict[str, Any]]:
     results: list[dict[str, Any]] = []
     total_repositories = len(repositories)
@@ -262,8 +286,14 @@ def analyze_repositories(
     for index, repository in enumerate(repositories):
         repo_name = normalize_repo_name(repository)
         repo_url = normalize_repo_url(repository, repo_name)
-        api_url = build_codetabs_url(repo_name, branch, ignored)
         progress_label = f"[{index + 1}/{total_repositories}]"
+        cached_result = existing_results.get(repo_name)
+        if cached_result is not None:
+            results.append(cached_result)
+            log(f"{progress_label} SKIP {repo_name} (already present in resume file)")
+            continue
+
+        api_url = build_codetabs_url(repo_name, branch, ignored)
         log(f"{progress_label} Fetching LOC for {repo_name}")
 
         try:
@@ -402,6 +432,17 @@ def main() -> int:
     if args.min_java_share is not None:
         log(f"Filtering final output to repositories with Java share >= {args.min_java_share:.3f}")
 
+    resume_path = args.resume_from
+    if resume_path is None and os.path.exists(args.output):
+        resume_path = args.output
+
+    existing_results: dict[str, dict[str, Any]] = {}
+    if resume_path:
+        existing_results, _ = load_existing_results(resume_path)
+        log(
+            f"Loaded {len(existing_results)} successful cached analyses from {resume_path}"
+        )
+
     results = analyze_repositories(
         repositories=repositories,
         branch=args.branch,
@@ -409,6 +450,7 @@ def main() -> int:
         sleep_seconds=args.sleep_seconds,
         timeout_seconds=args.timeout_seconds,
         stop_on_error=args.stop_on_error,
+        existing_results=existing_results,
     )
     filtered_results = filter_results(results, args.min_java_share)
 

@@ -20,8 +20,7 @@ Examples:
   GITHUB_TOKEN=ghp_xxx python3 scripts/github_repo_search_export.py \
     --topic benchmark \
     --language Python \
-    --output repos.csv \
-    --page 2
+    --output repos.csv
 
   GITHUB_TOKEN=ghp_xxx python3 scripts/github_repo_search_export.py \
     --search-term compiler \
@@ -48,7 +47,8 @@ from typing import Any
 
 API_URL = "https://api.github.com/search/repositories"
 API_VERSION = "2026-03-10"
-MAX_PER_PAGE = 100
+MAX_SEARCH_RESULTS = 1000
+REQUEST_BATCH_SIZE = 100
 
 
 def log(message: str) -> None:
@@ -68,18 +68,6 @@ def parse_args() -> argparse.Namespace:
         "--format",
         choices=("json", "csv"),
         help="Output format. If omitted, inferred from the output file extension.",
-    )
-    parser.add_argument(
-        "--page",
-        type=int,
-        default=1,
-        help="GitHub API page number to fetch. Default: 1.",
-    )
-    parser.add_argument(
-        "--per-page",
-        type=int,
-        default=MAX_PER_PAGE,
-        help=f"Results per API page, max {MAX_PER_PAGE}. Default: {MAX_PER_PAGE}.",
     )
     parser.add_argument(
         "--include-metadata",
@@ -259,11 +247,11 @@ def build_query(args: argparse.Namespace) -> str:
     return " ".join(parts)
 
 
-def build_request_url(query: str, page: int, per_page: int) -> str:
+def build_request_url(query: str, batch_index: int) -> str:
     params = {
         "q": query,
-        "page": str(page),
-        "per_page": str(per_page),
+        "page": str(batch_index),
+        "per_page": str(REQUEST_BATCH_SIZE),
     }
     return f"{API_URL}?{urllib.parse.urlencode(params)}"
 
@@ -314,24 +302,47 @@ def normalize_repo(item: dict[str, Any], include_metadata: bool) -> dict[str, An
 
 def fetch_repositories(
     query: str,
-    page: int,
-    per_page: int,
     include_metadata: bool,
     token: str | None,
 ) -> tuple[list[dict[str, Any]], int]:
-    log(f"Fetching GitHub repositories for page {page} with per_page={per_page}")
-    payload = github_get(build_request_url(query, page, per_page), token)
-    total_count = int(payload.get("total_count", 0))
-    incomplete_results = bool(payload.get("incomplete_results", False))
-    if incomplete_results:
-        print(
-            "Warning: GitHub reports incomplete_results=true; the result set may be partial.",
-            file=sys.stderr,
+    repositories: list[dict[str, Any]] = []
+    batch_index = 1
+    total_count = 0
+    target_count = 0
+
+    log("Fetching GitHub repositories")
+    while True:
+        payload = github_get(build_request_url(query, batch_index), token)
+        if batch_index == 1:
+            total_count = int(payload.get("total_count", 0))
+            incomplete_results = bool(payload.get("incomplete_results", False))
+            if incomplete_results:
+                print(
+                    "Warning: GitHub reports incomplete_results=true; the result set may be partial.",
+                    file=sys.stderr,
+                )
+            target_count = min(total_count, MAX_SEARCH_RESULTS)
+
+        items = payload.get("items", [])
+        repositories.extend(
+            normalize_repo(item, include_metadata) for item in items
+        )
+        collected = len(repositories)
+        log(
+            f"Completed request {batch_index} "
+            f"({collected}/{target_count if target_count else total_count} repositories collected)"
         )
 
-    repositories = [
-        normalize_repo(item, include_metadata) for item in payload.get("items", [])
-    ]
+        if not items:
+            break
+        if target_count and collected >= target_count:
+            repositories = repositories[:target_count]
+            break
+        if len(items) < REQUEST_BATCH_SIZE:
+            break
+
+        batch_index += 1
+
     return repositories, total_count
 
 
@@ -340,16 +351,13 @@ def write_json(
     query: str,
     repositories: list[dict[str, Any]],
     total_count: int,
-    page: int,
-    per_page: int,
 ) -> None:
     payload = {
         "query": query,
         "retrieved_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "page": page,
-        "per_page": per_page,
         "result_count_exported": len(repositories),
         "total_count_reported_by_github": total_count,
+        "github_search_result_cap": MAX_SEARCH_RESULTS,
         "repositories": repositories,
     }
     with open(output_path, "w", encoding="utf-8") as handle:
@@ -373,17 +381,11 @@ def main() -> int:
     args = parse_args()
     output_format = infer_format(args.output, args.format)
     query = build_query(args)
-    per_page = min(MAX_PER_PAGE, max(1, args.per_page))
     token = args.token or os.environ.get("GITHUB_TOKEN")
-
-    if args.page < 1:
-        raise SystemExit("--page must be at least 1.")
 
     log(f"Built GitHub query: {query}")
     repositories, total_count = fetch_repositories(
         query=query,
-        page=args.page,
-        per_page=per_page,
         include_metadata=args.include_metadata,
         token=token,
     )
@@ -391,13 +393,21 @@ def main() -> int:
     os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
     log(f"Writing {len(repositories)} repositories to {args.output}")
     if output_format == "json":
-        write_json(args.output, query, repositories, total_count, args.page, per_page)
+        write_json(args.output, query, repositories, total_count)
     else:
         write_csv(args.output, repositories)
 
+    capped_note = ""
+    if total_count > MAX_SEARCH_RESULTS:
+        capped_note = (
+            f" GitHub search results are capped at {MAX_SEARCH_RESULTS}; "
+            f"the export contains the first {len(repositories)} matches."
+        )
+
     print(
         f"Exported {len(repositories)} repositories to {args.output}."
-        f" GitHub reported {total_count} matching repositories for query: {query}"
+        f" GitHub reported {total_count} matching repositories for query: {query}."
+        f"{capped_note}"
     )
     return 0
 

@@ -36,12 +36,13 @@ GITHUB_TOKEN=your_token_here python3 scripts/github_repo_search_export.py \
 
 Useful options:
 
-- `--page 2` to fetch another GitHub API page
 - `--format csv` to force CSV output
 - `--include-metadata` to include stars, forks, language, license, size, and `pushed_at`
 - `--search-term`, `--topic`, `--extra-qualifier` for more query flexibility
 
-The JSON output includes the final assembled GitHub query string for documentation and reproducibility.
+The export script fetches the full GitHub search result set automatically. The JSON output includes the final assembled GitHub query string for documentation and reproducibility.
+
+GitHub search itself still has a platform cap of `1000` results per query. If your query matches more than that, the script exports the first `1000` results and reports the full match count from GitHub.
 
 ## 2. Analyze Java LOC With CodeTabs
 
@@ -77,7 +78,19 @@ Useful options:
 
 - `--branch BRANCH_NAME` to analyze a specific branch
 - `--ignored DIR_OR_FILE` to ignore files or directories in the LOC analysis
+- `--resume-from EXISTING_ANALYSIS.json` to reuse successful rows from a previous LOC analysis file
 - `--stop-on-error` to stop immediately if one repository fails
+
+Resume example:
+
+```bash
+python3 scripts/github_repo_java_loc_analysis.py \
+  --input java-repos.json \
+  --output java-repos-loc.json \
+  --resume-from java-repos-loc.json
+```
+
+If `--resume-from` is not provided and the output file already exists, the script automatically reuses successful rows from the existing output file and only analyzes missing repositories.
 
 ## CodeTabs Rate Limit
 
