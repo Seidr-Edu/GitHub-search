@@ -1,0 +1,489 @@
+{
+  "query": "stars:>=1300 forks:>=100 size:<=2000 pushed:>=2024-05-05 language:Java license:mit license:apache-2.0 license:bsd-3-clause license:bsd-2-clause license:0bsd is:public",
+  "retrieved_at": "2026-05-05T13:05:06Z",
+  "result_count_exported": 120,
+  "total_count_reported_by_github": 120,
+  "github_search_result_cap": 1000,
+  "repositories": [
+    {
+      "name": "wuyouzhuguli/SpringAll",
+      "url": "https://github.com/wuyouzhuguli/SpringAll"
+    },
+    {
+      "name": "crossoverJie/JCSprout",
+      "url": "https://github.com/crossoverJie/JCSprout"
+    },
+    {
+      "name": "ReactiveX/RxAndroid",
+      "url": "https://github.com/ReactiveX/RxAndroid"
+    },
+    {
+      "name": "sqshq/piggymetrics",
+      "url": "https://github.com/sqshq/piggymetrics"
+    },
+    {
+      "name": "amitshekhariitbhu/android-interview-questions",
+      "url": "https://github.com/amitshekhariitbhu/android-interview-questions"
+    },
+    {
+      "name": "mission-peace/interview",
+      "url": "https://github.com/mission-peace/interview"
+    },
+    {
+      "name": "square/javapoet",
+      "url": "https://github.com/square/javapoet"
+    },
+    {
+      "name": "frohoff/ysoserial",
+      "url": "https://github.com/frohoff/ysoserial"
+    },
+    {
+      "name": "LaurieWired/GhidraMCP",
+      "url": "https://github.com/LaurieWired/GhidraMCP"
+    },
+    {
+      "name": "amitshekhariitbhu/Android-Debug-Database",
+      "url": "https://github.com/amitshekhariitbhu/Android-Debug-Database"
+    },
+    {
+      "name": "google/tsunami-security-scanner",
+      "url": "https://github.com/google/tsunami-security-scanner"
+    },
+    {
+      "name": "aritraroy/UltimateAndroidReference",
+      "url": "https://github.com/aritraroy/UltimateAndroidReference"
+    },
+    {
+      "name": "Genymobile/gnirehtet",
+      "url": "https://github.com/Genymobile/gnirehtet"
+    },
+    {
+      "name": "Meituan-Dianping/walle",
+      "url": "https://github.com/Meituan-Dianping/walle"
+    },
+    {
+      "name": "fuzhengwei/itstack-demo-design",
+      "url": "https://github.com/fuzhengwei/itstack-demo-design"
+    },
+    {
+      "name": "DerekYRC/mini-spring",
+      "url": "https://github.com/DerekYRC/mini-spring"
+    },
+    {
+      "name": "amitshekhariitbhu/from-java-to-kotlin",
+      "url": "https://github.com/amitshekhariitbhu/from-java-to-kotlin"
+    },
+    {
+      "name": "auth0/java-jwt",
+      "url": "https://github.com/auth0/java-jwt"
+    },
+    {
+      "name": "pedrovgs/EffectiveAndroidUI",
+      "url": "https://github.com/pedrovgs/EffectiveAndroidUI"
+    },
+    {
+      "name": "dmytrodanylyk/circular-progress-button",
+      "url": "https://github.com/dmytrodanylyk/circular-progress-button"
+    },
+    {
+      "name": "mik3y/usb-serial-for-android",
+      "url": "https://github.com/mik3y/usb-serial-for-android"
+    },
+    {
+      "name": "j-easy/easy-rules",
+      "url": "https://github.com/j-easy/easy-rules"
+    },
+    {
+      "name": "baomidou/dynamic-datasource",
+      "url": "https://github.com/baomidou/dynamic-datasource"
+    },
+    {
+      "name": "javastacks/spring-boot-best-practice",
+      "url": "https://github.com/javastacks/spring-boot-best-practice"
+    },
+    {
+      "name": "Devlight/NavigationTabBar",
+      "url": "https://github.com/Devlight/NavigationTabBar"
+    },
+    {
+      "name": "amitshekhariitbhu/RxJava2-Android-Samples",
+      "url": "https://github.com/amitshekhariitbhu/RxJava2-Android-Samples"
+    },
+    {
+      "name": "TheoKanning/openai-java",
+      "url": "https://github.com/TheoKanning/openai-java"
+    },
+    {
+      "name": "Heeexy/SpringBoot-Shiro-Vue",
+      "url": "https://github.com/Heeexy/SpringBoot-Shiro-Vue"
+    },
+    {
+      "name": "failsafe-lib/failsafe",
+      "url": "https://github.com/failsafe-lib/failsafe"
+    },
+    {
+      "name": "mouredev/hello-java",
+      "url": "https://github.com/mouredev/hello-java"
+    },
+    {
+      "name": "rubensousa/ViewPagerCards",
+      "url": "https://github.com/rubensousa/ViewPagerCards"
+    },
+    {
+      "name": "awaitility/awaitility",
+      "url": "https://github.com/awaitility/awaitility"
+    },
+    {
+      "name": "promeG/TinyPinyin",
+      "url": "https://github.com/promeG/TinyPinyin"
+    },
+    {
+      "name": "databricks/learning-spark",
+      "url": "https://github.com/databricks/learning-spark"
+    },
+    {
+      "name": "Ereza/CustomActivityOnCrash",
+      "url": "https://github.com/Ereza/CustomActivityOnCrash"
+    },
+    {
+      "name": "Mojang/brigadier",
+      "url": "https://github.com/Mojang/brigadier"
+    },
+    {
+      "name": "mbechler/marshalsec",
+      "url": "https://github.com/mbechler/marshalsec"
+    },
+    {
+      "name": "nageoffer/12306",
+      "url": "https://github.com/nageoffer/12306"
+    },
+    {
+      "name": "Netflix/concurrency-limits",
+      "url": "https://github.com/Netflix/concurrency-limits"
+    },
+    {
+      "name": "JakeWharton/ThreeTenABP",
+      "url": "https://github.com/JakeWharton/ThreeTenABP"
+    },
+    {
+      "name": "LinShunKang/MyPerf4J",
+      "url": "https://github.com/LinShunKang/MyPerf4J"
+    },
+    {
+      "name": "ittianyu/BottomNavigationViewEx",
+      "url": "https://github.com/ittianyu/BottomNavigationViewEx"
+    },
+    {
+      "name": "Grt1228/chatgpt-java",
+      "url": "https://github.com/Grt1228/chatgpt-java"
+    },
+    {
+      "name": "alamkanak/Android-Week-View",
+      "url": "https://github.com/alamkanak/Android-Week-View"
+    },
+    {
+      "name": "Devo919/Gewechat",
+      "url": "https://github.com/Devo919/Gewechat"
+    },
+    {
+      "name": "google/volley",
+      "url": "https://github.com/google/volley"
+    },
+    {
+      "name": "amitshekhariitbhu/PRDownloader",
+      "url": "https://github.com/amitshekhariitbhu/PRDownloader"
+    },
+    {
+      "name": "elvishew/xLog",
+      "url": "https://github.com/elvishew/xLog"
+    },
+    {
+      "name": "openid/AppAuth-Android",
+      "url": "https://github.com/openid/AppAuth-Android"
+    },
+    {
+      "name": "airbnb/native-navigation",
+      "url": "https://github.com/airbnb/native-navigation"
+    },
+    {
+      "name": "ulisesbocchio/jasypt-spring-boot",
+      "url": "https://github.com/ulisesbocchio/jasypt-spring-boot"
+    },
+    {
+      "name": "sofastack/sofa-jarslink",
+      "url": "https://github.com/sofastack/sofa-jarslink"
+    },
+    {
+      "name": "amitshekhariitbhu/android-developer-roadmap",
+      "url": "https://github.com/amitshekhariitbhu/android-developer-roadmap"
+    },
+    {
+      "name": "arcadefire/nice-spinner",
+      "url": "https://github.com/arcadefire/nice-spinner"
+    },
+    {
+      "name": "jOOQ/jOOR",
+      "url": "https://github.com/jOOQ/jOOR"
+    },
+    {
+      "name": "pedrovgs/Algorithms",
+      "url": "https://github.com/pedrovgs/Algorithms"
+    },
+    {
+      "name": "RodneyShag/HackerRank_solutions",
+      "url": "https://github.com/RodneyShag/HackerRank_solutions"
+    },
+    {
+      "name": "mouzt/mzt-biz-log",
+      "url": "https://github.com/mouzt/mzt-biz-log"
+    },
+    {
+      "name": "pf4j/pf4j",
+      "url": "https://github.com/pf4j/pf4j"
+    },
+    {
+      "name": "vdurmont/emoji-java",
+      "url": "https://github.com/vdurmont/emoji-java"
+    },
+    {
+      "name": "apache/casbin-jcasbin",
+      "url": "https://github.com/apache/casbin-jcasbin"
+    },
+    {
+      "name": "VerbalExpressions/JavaVerbalExpressions",
+      "url": "https://github.com/VerbalExpressions/JavaVerbalExpressions"
+    },
+    {
+      "name": "esoxjem/MovieGuide",
+      "url": "https://github.com/esoxjem/MovieGuide"
+    },
+    {
+      "name": "shmykelsa/AAAD",
+      "url": "https://github.com/shmykelsa/AAAD"
+    },
+    {
+      "name": "pwittchen/ReactiveNetwork",
+      "url": "https://github.com/pwittchen/ReactiveNetwork"
+    },
+    {
+      "name": "xtuhcy/gecco",
+      "url": "https://github.com/xtuhcy/gecco"
+    },
+    {
+      "name": "sofastack/sofa-bolt",
+      "url": "https://github.com/sofastack/sofa-bolt"
+    },
+    {
+      "name": "nico2sh/materialish-progress",
+      "url": "https://github.com/nico2sh/materialish-progress"
+    },
+    {
+      "name": "JakeWharton/RxRelay",
+      "url": "https://github.com/JakeWharton/RxRelay"
+    },
+    {
+      "name": "balysv/material-menu",
+      "url": "https://github.com/balysv/material-menu"
+    },
+    {
+      "name": "nex3z/FlowLayout",
+      "url": "https://github.com/nex3z/FlowLayout"
+    },
+    {
+      "name": "LSPosed/AndroidHiddenApiBypass",
+      "url": "https://github.com/LSPosed/AndroidHiddenApiBypass"
+    },
+    {
+      "name": "modelmapper/modelmapper",
+      "url": "https://github.com/modelmapper/modelmapper"
+    },
+    {
+      "name": "aress31/burpgpt",
+      "url": "https://github.com/aress31/burpgpt"
+    },
+    {
+      "name": "apache/rocketmq-spring",
+      "url": "https://github.com/apache/rocketmq-spring"
+    },
+    {
+      "name": "anitaa1990/Android-Cheat-sheet",
+      "url": "https://github.com/anitaa1990/Android-Cheat-sheet"
+    },
+    {
+      "name": "balsikandar/Android-Studio-Plugins",
+      "url": "https://github.com/balsikandar/Android-Studio-Plugins"
+    },
+    {
+      "name": "bigintpro/csdn_downloader",
+      "url": "https://github.com/bigintpro/csdn_downloader"
+    },
+    {
+      "name": "RikkaApps/Shizuku-API",
+      "url": "https://github.com/RikkaApps/Shizuku-API"
+    },
+    {
+      "name": "JakeWharton/ProcessPhoenix",
+      "url": "https://github.com/JakeWharton/ProcessPhoenix"
+    },
+    {
+      "name": "jOOQ/jOOL",
+      "url": "https://github.com/jOOQ/jOOL"
+    },
+    {
+      "name": "thoughtbot/expandable-recycler-view",
+      "url": "https://github.com/thoughtbot/expandable-recycler-view"
+    },
+    {
+      "name": "macrozheng/mall-tiny",
+      "url": "https://github.com/macrozheng/mall-tiny"
+    },
+    {
+      "name": "linkedin/kafka-monitor",
+      "url": "https://github.com/linkedin/kafka-monitor"
+    },
+    {
+      "name": "ali-bouali/spring-boot-3-jwt-security",
+      "url": "https://github.com/ali-bouali/spring-boot-3-jwt-security"
+    },
+    {
+      "name": "loda-kun/spring-boot-learning",
+      "url": "https://github.com/loda-kun/spring-boot-learning"
+    },
+    {
+      "name": "zhegexiaohuozi/SeimiCrawler",
+      "url": "https://github.com/zhegexiaohuozi/SeimiCrawler"
+    },
+    {
+      "name": "MegatronKing/StringFog",
+      "url": "https://github.com/MegatronKing/StringFog"
+    },
+    {
+      "name": "YeautyYE/netty-websocket-spring-boot-starter",
+      "url": "https://github.com/YeautyYE/netty-websocket-spring-boot-starter"
+    },
+    {
+      "name": "evant/binding-collection-adapter",
+      "url": "https://github.com/evant/binding-collection-adapter"
+    },
+    {
+      "name": "LianjiaTech/retrofit-spring-boot-starter",
+      "url": "https://github.com/LianjiaTech/retrofit-spring-boot-starter"
+    },
+    {
+      "name": "Java-aid/Hackerrank-Solutions",
+      "url": "https://github.com/Java-aid/Hackerrank-Solutions"
+    },
+    {
+      "name": "jaredrummler/AndroidProcesses",
+      "url": "https://github.com/jaredrummler/AndroidProcesses"
+    },
+    {
+      "name": "centic9/jgit-cookbook",
+      "url": "https://github.com/centic9/jgit-cookbook"
+    },
+    {
+      "name": "kymjs/TheMVP",
+      "url": "https://github.com/kymjs/TheMVP"
+    },
+    {
+      "name": "Chainfire/libsuperuser",
+      "url": "https://github.com/Chainfire/libsuperuser"
+    },
+    {
+      "name": "murraco/spring-boot-jwt",
+      "url": "https://github.com/murraco/spring-boot-jwt"
+    },
+    {
+      "name": "bazaarvoice/jolt",
+      "url": "https://github.com/bazaarvoice/jolt"
+    },
+    {
+      "name": "bamlab/react-native-image-resizer",
+      "url": "https://github.com/bamlab/react-native-image-resizer"
+    },
+    {
+      "name": "whwlsfb/JDumpSpider",
+      "url": "https://github.com/whwlsfb/JDumpSpider"
+    },
+    {
+      "name": "monkeyWie/proxyee",
+      "url": "https://github.com/monkeyWie/proxyee"
+    },
+    {
+      "name": "happyfish100/fastdfs-client-java",
+      "url": "https://github.com/happyfish100/fastdfs-client-java"
+    },
+    {
+      "name": "pagehelper-org/pagehelper-spring-boot",
+      "url": "https://github.com/pagehelper-org/pagehelper-spring-boot"
+    },
+    {
+      "name": "LeonardoZ/java-concurrency-patterns",
+      "url": "https://github.com/LeonardoZ/java-concurrency-patterns"
+    },
+    {
+      "name": "19MisterX98/SeedcrackerX",
+      "url": "https://github.com/19MisterX98/SeedcrackerX"
+    },
+    {
+      "name": "EsotericSoftware/reflectasm",
+      "url": "https://github.com/EsotericSoftware/reflectasm"
+    },
+    {
+      "name": "gothinkster/spring-boot-realworld-example-app",
+      "url": "https://github.com/gothinkster/spring-boot-realworld-example-app"
+    },
+    {
+      "name": "xmolecules/jmolecules",
+      "url": "https://github.com/xmolecules/jmolecules"
+    },
+    {
+      "name": "DantSu/ESCPOS-ThermalPrinter-Android",
+      "url": "https://github.com/DantSu/ESCPOS-ThermalPrinter-Android"
+    },
+    {
+      "name": "wechatpay-apiv3/wechatpay-java",
+      "url": "https://github.com/wechatpay-apiv3/wechatpay-java"
+    },
+    {
+      "name": "mitre/HTTP-Proxy-Servlet",
+      "url": "https://github.com/mitre/HTTP-Proxy-Servlet"
+    },
+    {
+      "name": "stealthcopter/AndroidNetworkTools",
+      "url": "https://github.com/stealthcopter/AndroidNetworkTools"
+    },
+    {
+      "name": "google/flogger",
+      "url": "https://github.com/google/flogger"
+    },
+    {
+      "name": "licheedev/Android-SerialPort-API",
+      "url": "https://github.com/licheedev/Android-SerialPort-API"
+    },
+    {
+      "name": "spring-guides/gs-rest-service",
+      "url": "https://github.com/spring-guides/gs-rest-service"
+    },
+    {
+      "name": "facebook/SoLoader",
+      "url": "https://github.com/facebook/SoLoader"
+    },
+    {
+      "name": "mauron85/react-native-background-geolocation",
+      "url": "https://github.com/mauron85/react-native-background-geolocation"
+    },
+    {
+      "name": "eugene-khyst/postgresql-event-sourcing",
+      "url": "https://github.com/eugene-khyst/postgresql-event-sourcing"
+    },
+    {
+      "name": "ocpsoft/prettytime",
+      "url": "https://github.com/ocpsoft/prettytime"
+    },
+    {
+      "name": "square/seismic",
+      "url": "https://github.com/square/seismic"
+    }
+  ]
+}
