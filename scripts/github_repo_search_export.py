@@ -289,6 +289,7 @@ def normalize_repo(item: dict[str, Any], include_metadata: bool) -> dict[str, An
                 "id": item.get("id"),
                 "stars": item.get("stargazers_count"),
                 "forks": item.get("forks_count"),
+                "description": item.get("description"),
                 "language": item.get("language"),
                 "license": license_data.get("spdx_id") or license_data.get("key"),
                 "size_kb": item.get("size"),
